@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Kaelyx_ConfigurableCSP::kaelyx" title="Kaelyx" module="Kaelyx_ConfigurableCSP" sortOrder="999" resource="Kaelyx_ConfigurableCSP::kaelyx"/>
+        <add id="Kaelyx_ConfigurableCSP::configurable_csp" title="Configurable CSP" module="Kaelyx_ConfigurableCSP" sortOrder="10" parent="Kaelyx_ConfigurableCSP::kaelyx" resource="Kaelyx_ConfigurableCSP::configurable_csp"/>
+        <add id="Kaelyx_ConfigurableCSP::list_csp_entries" title="List CSP Entries" module="Kaelyx_ConfigurableCSP" sortOrder="10" parent="Kaelyx_ConfigurableCSP::configurable_csp" action="kaelyx/cspentry/index" resource="Kaelyx_ConfigurableCSP::list_csp_entries"/>
+        <add id="Kaelyx_ConfigurableCSP::add_csp_entry" title="Add CSP Entry" module="Kaelyx_ConfigurableCSP" sortOrder="20" parent="Kaelyx_ConfigurableCSP::configurable_csp" action="kaelyx/cspentry/new" resource="Kaelyx_ConfigurableCSP::add_csp_entry"/>
+    </menu>
+</config>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">kaelyx_cspentry_listing.kaelyx_cspentry_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>kaelyx_cspentry_columns</spinner>
+        <deps>
+            <dep>kaelyx_cspentry_listing.kaelyx_cspentry_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add New CSP Entry</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="kaelyx_cspentry_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Kaelyx_ConfigurableCSP::list_cspentries</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="kaelyx_cspentry_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters">
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+            <filterSelect name="directive" provider="${ $.parentName }">
+                <settings>
+                    <captionValue>0</captionValue>
+                    <options class="Kaelyx\ConfigurableCSP\Ui\Component\Listing\Column\CspEntryOptions"/>
+                    <caption translate="true">Select...</caption>
+                    <label translate="true">CSP Entry</label>
+                    <dataScope>directive</dataScope>
+                    <imports>
+                        <link name="visible">componentType</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="*/*/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="kaelyx_cspentry_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="directive">
+            <settings>
+                <filter>select</filter>
+                <options class="Kaelyx\ConfigurableCSP\Ui\Component\Listing\Column\CspEntryOptions"/>
+                <dataType>select</dataType>
+                <label translate="true">CSP Entry</label>
+            </settings>
+        </column>
+        <column name="value">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Value</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Kaelyx\ConfigurableCSP\Ui\Component\Listing\Column\CspEntryActions">
+            <settings>
+                <indexField>id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

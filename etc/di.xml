@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="kaelyx_cspentry_listing_data_source" xsi:type="string">Kaelyx\ConfigurableCSP\Model\ResourceModel\CspEntry\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Kaelyx\ConfigurableCSP\Model\ResourceModel\CspEntry\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">kaelyx_configurablecsp</argument>
+            <argument name="resourceModel" xsi:type="string">Kaelyx\ConfigurableCSP\Model\ResourceModel\CspEntry</argument>
+        </arguments>
+    </virtualType>
+    
+    <type name="Magento\Csp\Model\CompositePolicyCollector">
+        <arguments>
+            <argument name="collectors" xsi:type="array">
+                <item name="kaelyx_custom_csp" xsi:type="object">Kaelyx\ConfigurableCSP\Model\Policy\CustomCspCollector</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

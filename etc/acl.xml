@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Kaelyx_ConfigurableCSP::kaelyx" title="Kaelyx" sortOrder="999">
+                    <resource id="Kaelyx_ConfigurableCSP::configurable_csp" title="Configurable CSP" sortOrder="10">
+                        <resource id="Kaelyx_ConfigurableCSP::list_csp_entries" title="List CSP Entries" sortOrder="10"/>
+                        <resource id="Kaelyx_ConfigurableCSP::add_csp_entry" title="Add CSP Entry" sortOrder="20"/>
+                    </resource>
+                    <resource id="Kaelyx_ConfigurableCSP::configure" title="Manage CSP Entries" sortOrder="0">
+                        <resource id="Kaelyx_ConfigurableCSP::configure_script" title="Configure Script Directive Sources" sortOrder="10"/>
+                        <resource id="Kaelyx_ConfigurableCSP::configure_font" title="Configure Font Directive Sources" sortOrder="10"/>
+                        <resource id="Kaelyx_ConfigurableCSP::configure_image" title="Configure Image Directive Sources" sortOrder="10"/>
+                        <resource id="Kaelyx_ConfigurableCSP::configure_style" title="Configure Style Directive Sources" sortOrder="10"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
